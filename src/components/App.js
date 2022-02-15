@@ -140,24 +140,24 @@ function App() {
     auth.register(data)
       .then((data) => {
         console.log(data)
-        setInfoTooltipOpen(true)
         setSuccessSignUp(true)
         history.push("/signin")
       })
       .catch(err => {
-        setInfoTooltipOpen(true)
         setSuccessSignUp(false)
         console.log(err)
       })
+      .finally(() => setInfoTooltipOpen(true))
   }
 
   function handleLogin(data) {
     auth.authorize(data)
-      .then((data) => {
-        localStorage.setItem('token', data.token);
+      .then((res) => {
+        localStorage.setItem('token', res.token);
         setLoggedIn(true);
         history.push("/main");
-        //console.log(data.token)
+        setUserEmail(data.email)
+        //console.log(data)
       })
       .catch(err => {
         setInfoTooltipOpen(true)
@@ -190,6 +190,16 @@ function App() {
     localStorage.removeItem('token');
     setUserEmail('')
   }
+
+  React.useEffect(() => {
+    function closeByEscape (e) {
+      if (e.key === 'Escape') {
+        closeAllPopups();
+      }
+    }
+    document.addEventListener('keydown', closeByEscape)    
+    return () => document.removeEventListener('keydown', closeByEscape)
+}, [])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

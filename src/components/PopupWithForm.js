@@ -7,7 +7,7 @@ function PopupWithForm (props) {
       <div className="popup__content" onClick={e=> {e.stopPropagation()}}>
         <button className="popup__close hover-button" type="button" onClick={props.onClose}></button>
         <h3 className="popup__title">{props.title}</h3>
-        <form className="popup__form" name={`form-${props.name}`} onSubmit={props.onSubmit} noValidate>
+        <form className="popup__form" name={`form-${props.name}`} onSubmit={props.onSubmit} >
          {props.children}
           <button className="popup__button" type="submit">{isLoadingData}</button>        
         </form>
