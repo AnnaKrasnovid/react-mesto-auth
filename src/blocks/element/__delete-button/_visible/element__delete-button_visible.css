@@ -1,0 +1,8 @@
+.element__delete-button_visible {
+    background: url(../../../../image/deleteButton.svg);
+    background-size: 18px 19px;
+    width: 18px;
+    height: 19px; 
+    cursor: pointer;  
+    margin: 0;    
+}

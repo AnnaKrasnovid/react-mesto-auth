@@ -1,0 +1,13 @@
+.popup__button_theme_white {
+    background-color: white;
+    color: black;
+    margin-top: 202px;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__button_theme_white {
+        margin-top: 173px;
+        max-width: 260px;
+        width: 100%;
+    }
+  }
